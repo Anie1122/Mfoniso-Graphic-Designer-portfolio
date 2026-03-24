@@ -1,6 +1,9 @@
 # Portfolio Work Images
 
-Place the uploaded portfolio images in this folder using the exact filenames referenced in `index.html`:
+Your images were showing as **"Image missing"** because the files are not yet in this repository under `/assets/works/`.
+
+## Add your files here
+Place the uploaded portfolio images in this folder using these exact filenames:
 
 - `shop-your-gadgets.jpg`
 - `wanna-make-cool-cash.jpg`
@@ -23,4 +26,7 @@ Place the uploaded portfolio images in this folder using the exact filenames ref
 - `welcome-to-february.jpg`
 - `others-grid-showcase.jpg`
 
-> Why this file exists: the latest request provided work samples that should be distributed into the portfolio categories. The page now points to local assets in this folder so the gallery can display your original work once these files are added.
+## Current behavior
+- App first loads local files from `/assets/works/...`
+- If local files are missing, it temporarily falls back to backup online images
+- If backup also fails, it shows the "Image missing" card
