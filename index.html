@@ -485,7 +485,7 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 2rem;
         }
 
@@ -731,36 +731,27 @@
         }
 
 
-        .portfolio-tools {
+        .portfolio-slider-controls {
             display: flex;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .upload-btn {
+        .slide-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid var(--primary-blue);
             background: transparent;
             color: var(--primary-blue);
-            border: 1px solid var(--primary-blue);
-            padding: 0.7rem 1.3rem;
-            border-radius: 999px;
-            cursor: pointer;
             font-family: 'Orbitron', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .upload-btn:hover {
-            background: rgba(0, 212, 255, 0.12);
-            box-shadow: var(--glow-blue);
-        }
-
-        .upload-hint {
-            text-align: center;
+        .slide-indicator {
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: -0.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
@@ -771,6 +762,10 @@
             }
             
             .resume-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1018,12 +1013,6 @@
             <h2>My Recent Works</h2>
         </div>
 
-        <div class="portfolio-tools">
-            <button class="upload-btn" id="uploadWorksBtn" type="button">Upload Provided Works</button>
-            <input type="file" id="worksInput" accept="image/*" multiple hidden>
-        </div>
-        <p class="upload-hint">Select your provided images in order to replace gallery items instantly.</p>
-
         <div class="portfolio-filter">
             <button class="filter-btn active" data-filter="all">All Works</button>
             <button class="filter-btn" data-filter="social">Social Media</button>
@@ -1035,6 +1024,11 @@
 
         <div class="portfolio-grid" id="portfolioGrid">
             <!-- Items will be populated by JavaScript -->
+        </div>
+        <div class="portfolio-slider-controls">
+            <button class="slide-btn" id="prevSlideBtn" type="button">◀ Previous</button>
+            <span class="slide-indicator" id="slideIndicator">1 / 1</span>
+            <button class="slide-btn" id="nextSlideBtn" type="button">Next ▶</button>
         </div>
     </section>
 
@@ -1116,44 +1110,53 @@
     <script>
         // Portfolio Data - Replace these URLs with your actual image URLs when you host them
         const portfolioItems = [
-            { id: 1, category: 'social', title: 'Shop Your Gadgets', img: '/assets/works/shop-your-gadgets.jpg', fallback: 'https://images.unsplash.com/photo-1498049860654-af1a5c5668ba?w=1200&h=1200&fit=crop' },
-            { id: 2, category: 'web3', title: 'Wanna Make Cool Cash', img: '/assets/works/wanna-make-cool-cash.jpg', fallback: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200&h=1200&fit=crop' },
-            { id: 3, category: 'brand', title: 'Energy Reload', img: '/assets/works/energy-reload.jpg', fallback: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=1200&h=1200&fit=crop' },
-            { id: 4, category: 'other', title: 'Ash Wednesday', img: '/assets/works/ash-wednesday.jpg', fallback: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=1200&fit=crop' },
-            { id: 5, category: 'social', title: 'Welcome to March', img: '/assets/works/welcome-to-march.jpg', fallback: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&h=1200&fit=crop' },
-            { id: 6, category: 'brand', title: 'Transform Your Social Media Presence', img: '/assets/works/transform-social-media-presence.jpg', fallback: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&h=1200&fit=crop' },
-            { id: 7, category: 'brand', title: 'Invest in Solar Properties', img: '/assets/works/invest-solar-properties.jpg', fallback: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=1200&fit=crop' },
-            { id: 8, category: 'brand', title: 'Sprite Campaign', img: '/assets/works/sprite-campaign.jpg', fallback: 'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=1200&h=1200&fit=crop' },
-            { id: 9, category: 'brand', title: 'Elevate Your Brand', img: '/assets/works/elevate-your-brand.jpg', fallback: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=1200&fit=crop' },
-            { id: 10, category: 'other', title: "Becky's Glamour", img: '/assets/works/beckys-glamour.jpg', fallback: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=1200&h=1200&fit=crop' },
-            { id: 11, category: 'other', title: 'One Bite Shawarma', img: '/assets/works/one-bite-shawarma.jpg', fallback: 'https://images.unsplash.com/photo-1612392062798-2b0c9f7c9f00?w=1200&h=1200&fit=crop' },
-            { id: 12, category: 'other', title: 'Praise & Worship', img: '/assets/works/praise-and-worship.jpg', fallback: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&h=1200&fit=crop' },
-            { id: 13, category: 'other', title: 'Communion Service', img: '/assets/works/communion-service.jpg', fallback: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&h=1200&fit=crop' },
-            { id: 14, category: 'other', title: 'Taking Immediate Action', img: '/assets/works/taking-immediate-action.jpg', fallback: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=1200&fit=crop' },
-            { id: 15, category: 'social', title: 'Portfolio Landing Slide', img: '/assets/works/portfolio-landing-slide.jpg', fallback: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=1200&fit=crop' },
-            { id: 16, category: 'social', title: 'Resume Slide', img: '/assets/works/resume-slide.jpg', fallback: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&h=1200&fit=crop' },
-            { id: 17, category: 'social', title: 'Home Slide', img: '/assets/works/home-slide.jpg', fallback: 'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=1200&h=1200&fit=crop' },
-            { id: 18, category: 'other', title: 'Take That Bold Step', img: '/assets/works/take-that-bold-step.jpg', fallback: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&h=1200&fit=crop' },
-            { id: 19, category: 'social', title: 'Welcome to February', img: '/assets/works/welcome-to-february.jpg', fallback: 'https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=1200&h=1200&fit=crop' },
-            { id: 20, category: 'other', title: 'Others Grid Showcase', img: '/assets/works/others-grid-showcase.jpg', fallback: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?w=1200&h=1200&fit=crop' }
+            { id: 1, category: 'social', title: 'Shop Your Gadgets', img: '/assets/works/shop-your-gadgets.svg' },
+            { id: 2, category: 'web3', title: 'Wanna Make Cool Cash', img: '/assets/works/wanna-make-cool-cash.svg' },
+            { id: 3, category: 'brand', title: 'Energy Reload', img: '/assets/works/energy-reload.svg' },
+            { id: 4, category: 'other', title: 'Ash Wednesday', img: '/assets/works/ash-wednesday.svg' },
+            { id: 5, category: 'social', title: 'Welcome to March', img: '/assets/works/welcome-to-march.svg' },
+            { id: 6, category: 'brand', title: 'Transform Your Social Media Presence', img: '/assets/works/transform-social-media-presence.svg' },
+            { id: 7, category: 'brand', title: 'Invest in Solar Properties', img: '/assets/works/invest-solar-properties.svg' },
+            { id: 8, category: 'brand', title: 'Sprite Campaign', img: '/assets/works/sprite-campaign.svg' },
+            { id: 9, category: 'brand', title: 'Elevate Your Brand', img: '/assets/works/elevate-your-brand.svg' },
+            { id: 10, category: 'other', title: "Becky's Glamour", img: '/assets/works/beckys-glamour.svg' },
+            { id: 11, category: 'other', title: 'One Bite Shawarma', img: '/assets/works/one-bite-shawarma.svg' },
+            { id: 12, category: 'other', title: 'Praise & Worship', img: '/assets/works/praise-and-worship.svg' },
+            { id: 13, category: 'other', title: 'Communion Service', img: '/assets/works/communion-service.svg' },
+            { id: 14, category: 'other', title: 'Taking Immediate Action', img: '/assets/works/taking-immediate-action.svg' },
+            { id: 15, category: 'social', title: 'Portfolio Landing Slide', img: '/assets/works/portfolio-landing-slide.svg' },
+            { id: 16, category: 'social', title: 'Resume Slide', img: '/assets/works/resume-slide.svg' },
+            { id: 17, category: 'social', title: 'Home Slide', img: '/assets/works/home-slide.svg' },
+            { id: 18, category: 'other', title: 'Take That Bold Step', img: '/assets/works/take-that-bold-step.svg' },
+            { id: 19, category: 'social', title: 'Welcome to February', img: '/assets/works/welcome-to-february.svg' },
+            { id: 20, category: 'other', title: 'Others Grid Showcase', img: '/assets/works/others-grid-showcase.svg' }
         ];
 
         let currentImageIndex = 0;
         let filteredItems = portfolioItems;
+        let slideIndex = 0;
+        const worksPerSlide = 2;
 
         // Initialize Portfolio
         function renderPortfolio(filter = 'all') {
             const grid = document.getElementById('portfolioGrid');
+            const indicator = document.getElementById('slideIndicator');
             grid.innerHTML = '';
-            
-            filteredItems = filter === 'all' 
-                ? portfolioItems 
+
+            filteredItems = filter === 'all'
+                ? portfolioItems
                 : portfolioItems.filter(item => item.category === filter);
-            
-            filteredItems.forEach((item, index) => {
+
+            const totalSlides = Math.max(1, Math.ceil(filteredItems.length / worksPerSlide));
+            if (slideIndex >= totalSlides) slideIndex = 0;
+
+            const start = slideIndex * worksPerSlide;
+            const visibleItems = filteredItems.slice(start, start + worksPerSlide);
+
+            visibleItems.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'portfolio-item';
-                div.onclick = () => openLightbox(index);
+                div.onclick = () => openLightbox(start + index);
                 div.innerHTML = `
                     <img src="${item.img}" alt="${item.title}" loading="lazy">
                     <div class="portfolio-overlay">
@@ -1162,19 +1165,10 @@
                         <div class="portfolio-title">${item.title}</div>
                     </div>
                 `;
-                const img = div.querySelector('img');
-                img.addEventListener('error', () => {
-                    if (item.fallback && img.src !== item.fallback) {
-                        img.src = item.fallback;
-                        return;
-                    }
-                    img.style.objectFit = 'contain';
-                    img.style.padding = '1.5rem';
-                    img.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 600%22%3E%3Crect width=%22600%22 height=%22600%22 fill=%22%23111%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 fill=%22%2300d4ff%22 font-size=%2230%22 text-anchor=%22middle%22 font-family=%22Arial,sans-serif%22%3EImage missing%3C/text%3E%3Ctext x=%2250%25%22 y=%2256%25%22 fill=%22%23ffffff%22 font-size=%2222%22 text-anchor=%22middle%22 font-family=%22Arial,sans-serif%22%3EAdd file in /assets/works/%3C/text%3E%3C/svg%3E';
-                });
-
                 grid.appendChild(div);
             });
+
+            indicator.textContent = `${slideIndex + 1} / ${totalSlides}`;
         }
 
         // Filter Buttons
@@ -1182,11 +1176,30 @@
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+                slideIndex = 0;
                 renderPortfolio(this.dataset.filter);
             });
         });
 
-        // Lightbox Functions
+                document.getElementById('prevSlideBtn').addEventListener('click', () => {
+            const totalSlides = Math.max(1, Math.ceil(filteredItems.length / worksPerSlide));
+            slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+            renderPortfolio(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
+        });
+
+        document.getElementById('nextSlideBtn').addEventListener('click', () => {
+            const totalSlides = Math.max(1, Math.ceil(filteredItems.length / worksPerSlide));
+            slideIndex = (slideIndex + 1) % totalSlides;
+            renderPortfolio(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
+        });
+
+        setInterval(() => {
+            const totalSlides = Math.max(1, Math.ceil(filteredItems.length / worksPerSlide));
+            slideIndex = (slideIndex + 1) % totalSlides;
+            renderPortfolio(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
+        }, 5000);
+
+// Lightbox Functions
         function openLightbox(index) {
             currentImageIndex = index;
             const lightbox = document.getElementById('lightbox');
@@ -1284,25 +1297,6 @@
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.resume-card').forEach(card => skillObserver.observe(card));
-
-
-        // Manual Work Upload (client-side preview)
-        const worksInput = document.getElementById('worksInput');
-        const uploadWorksBtn = document.getElementById('uploadWorksBtn');
-
-        uploadWorksBtn.addEventListener('click', () => worksInput.click());
-
-        worksInput.addEventListener('change', (event) => {
-            const files = Array.from(event.target.files || []).filter(file => file.type.startsWith('image/'));
-            if (!files.length) return;
-
-            files.forEach((file, index) => {
-                if (!portfolioItems[index]) return;
-                portfolioItems[index].img = URL.createObjectURL(file);
-            });
-
-            renderPortfolio(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
-        });
 
         // Initialize
         renderPortfolio();
