@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mfoniso Ubong | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #00d4ff;
+            --dark-bg: #0a0a0a;
+            --card-bg: #111;
+            --text-primary: #ffffff;
+            --text-secondary: #888;
+            --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #fff, var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s;
+            box-shadow: var(--glow-blue);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%2300d4ff" opacity="0.3"/></svg>') repeat;
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary-blue);
+            border-radius: 50px;
+            color: var(--primary-blue);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 102, 255, 0.2));
+            border: 1px solid var(--primary-blue);
+            border-radius: 50px;
+            color: var(--primary-blue);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%) contrast(1.2);
+            transition: filter 0.5s;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), transparent);
+            pointer-events: none;
+        }
+
+        .about-content h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Resume Section */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .resume-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .resume-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resume-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .resume-card h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .skill-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), #0066ff);
+            border-radius: 3px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .skill-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-blue);
+        }
+
+        .experience-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-blue);
+            color: #000;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            group: true;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--card-bg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-category {
+            color: var(--primary-blue);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .portfolio-view {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-view {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-blue);
+            color: #000;
+        }
+
+        .lightbox-prev { left: -80px; }
+        .lightbox-next { right: -80px; }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-blue);
+            transform: translateX(10px);
+            box-shadow: var(--glow-blue);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+        }
+
+        .contact-details h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-blue);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .lightbox-prev { left: 20px; }
+            .lightbox-next { right: 20px; }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>◆</span> CLOUD EDGE MEDIA
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Welcome to my Portfolio</div>
+            <h1>MFONISO UBONG</h1>
+            <p class="hero-subtitle">Tech Advocate / Graphics Designer / Media Expert with 4+ years of experience creating stunning visual experiences</p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">ABOUT ME</span>
+            <h2>Why Choose Me?</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Mfoniso Ubong">
+            </div>
+            <div class="about-content">
+                <h3>Designing at the Intersection of Creativity & Intelligence</h3>
+                <p>I don't just rely on traditional design skills — I integrate AI-powered tools into my workflow to enhance precision, speed, innovation, and creative exploration.</p>
+                <p>This allows me to generate stronger concepts, test visual directions faster, and deliver cutting-edge results that stand out in today's digital space.</p>
+                <p><strong>AI doesn't replace my creativity — it amplifies it.</strong></p>
+                
+                <div class="skills-list">
+                    <span class="skill-tag">Human Creativity</span>
+                    <span class="skill-tag">Strategic Thinking</span>
+                    <span class="skill-tag">AI-Driven Enhancement</span>
+                    <span class="skill-tag">Brand Psychology</span>
+                    <span class="skill-tag">Detail-Focused Execution</span>
+                    <span class="skill-tag">Web3 Design</span>
+                    <span class="skill-tag">Social Media</span>
+                    <span class="skill-tag">Logo Design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">RESUME</span>
+            <h2>My Experience & Skills</h2>
+        </div>
+        <div class="resume-grid">
+            <!-- Software Skills -->
+            <div class="resume-card">
+                <h3>⚡ Software Skills</h3>
+                
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>Photoshop</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>Premiere Pro</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>Illustrator</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>Lightroom</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What I Can Do -->
+            <div class="resume-card">
+                <h3>🎯 What Can I Do?</h3>
+                <ul class="check-list">
+                    <li>Logo Design</li>
+                    <li>Graphics/Flyer Design</li>
+                    <li>Branding</li>
+                    <li>Video Editing</li>
+                    <li>Advertisement</li>
+                    <li>Media Management</li>
+                    <li>Photography</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Web3 Design</li>
+                </ul>
+            </div>
+
+            <!-- Experience -->
+            <div class="resume-card">
+                <h3>💼 Experience</h3>
+                
+                <div class="experience-item">
+                    <h4>CEO/Media Manager</h4>
+                    <p>Cloud Edge Media<br>(2022 - Present)</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Photographer</h4>
+                    <p>IBC ANUA<br>(2023 - Present)</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Graphics Designer</h4>
+                    <p>The Moffat Brothers<br>(2024 - Present)</p>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="resume-card">
+                <h3>🎓 Education</h3>
+                <div class="experience-item">
+                    <h4>HND in Engineering</h4>
+                    <p>Higher National Diploma</p>
+                </div>
+                <div class="experience-item">
+                    <h4>BSc in Computer Science</h4>
+                    <p>Bachelor of Science</p>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="resume-card">
+                <h3>🌍 Languages</h3>
+                
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>English</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-bar-header">
+                        <span>Spanish</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design/Tech Skills -->
+            <div class="resume-card">
+                <h3>🛠️ Design/Tech Skills</h3>
+                <ul class="check-list">
+                    <li>Graphics Designing</li>
+                    <li>Photography</li>
+                    <li>Video Editing</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Web3</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">PORTFOLIO</span>
+            <h2>My Recent Works</h2>
+        </div>
+
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">All Works</button>
+            <button class="filter-btn" data-filter="social">Social Media</button>
+            <button class="filter-btn" data-filter="logo">Logo Designs</button>
+            <button class="filter-btn" data-filter="brand">Brand Design</button>
+            <button class="filter-btn" data-filter="web3">Web3 Designs</button>
+            <button class="filter-btn" data-filter="other">Others</button>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Items will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">‹</button>
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">›</button>
+            <img id="lightboxImg" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">CONTACT</span>
+            <h2>Let's Work Together</h2>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Ready to elevate your brand? Let's create something amazing together.</p>
+                
+                <a href="mailto:mfonisobassey851@gmail.com" class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>mfonisobassey851@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="tel:+2348104139916" class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+234 810 413 9916</p>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/2348104139916" class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <h4>WhatsApp</h4>
+                        <p>+234 810 413 9916</p>
+                    </div>
+                </a>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook">f</a>
+                    <a href="#" class="social-btn" title="Instagram">📷</a>
+                    <a href="#" class="social-btn" title="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Why Me?</h3>
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                        <strong style="color: var(--primary-blue);">Because I design at the intersection of creativity and intelligence.</strong>
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                        I don't just rely on traditional design skills — I integrate AI-powered tools into my workflow to enhance precision, speed, innovation, and creative exploration.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        You're not just hiring a graphic designer. You're choosing a <strong style="color: #fff;">future-ready creative partner.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 <span>Mfoniso Ubong</span>. All rights reserved. | Designed with 💙 by Cloud Edge Media</p>
+    </footer>
+
+    <script>
+        // Portfolio Data - Replace these URLs with your actual image URLs when you host them
+        const portfolioItems = [
+            { id: 1, category: 'social', title: 'Solar Properties', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop' },
+            { id: 2, category: 'social', title: 'Private Piano Lessons', img: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=600&h=600&fit=crop' },
+            { id: 3, category: 'social', title: 'Embrace Elegance', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=600&fit=crop' },
+            { id: 4, category: 'social', title: 'February Campaign', img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=600&fit=crop' },
+            { id: 5, category: 'social', title: 'Shop Your Gadgets', img: 'https://images.unsplash.com/photo-1498049860654-af1a5c5668ba?w=600&h=600&fit=crop' },
+            { id: 6, category: 'social', title: 'Energy Reload', img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&h=600&fit=crop' },
+            { id: 7, category: 'logo', title: 'Pato Visuals', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=600&fit=crop' },
+            { id: 8, category: 'logo', title: 'Synapse', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=600&fit=crop' },
+            { id: 9, category: 'logo', title: 'Relay', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop' },
+            { id: 10, category: 'brand', title: 'Social Media Presence', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=600&fit=crop' },
+            { id: 11, category: 'brand', title: 'Elevate Your Brand', img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=600&fit=crop' },
+            { id: 12, category: 'brand', title: 'Africa Startups', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=600&fit=crop' },
+            { id: 13, category: 'web3', title: '$1 Million Giveaway', img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=600&fit=crop' },
+            { id: 14, category: 'web3', title: 'Mega Finance', img: 'https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=600&h=600&fit=crop' },
+            { id: 15, category: 'web3', title: 'Nexus X Synapse', img: 'https://images.unsplash.com/photo-1644361566696-3d442b5b482a?w=600&h=600&fit=crop' },
+            { id: 16, category: 'other', title: "Becky's Glamour", img: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&h=600&fit=crop' },
+            { id: 17, category: 'other', title: 'The Power of Mindset', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop' },
+        ];
+
+        let currentImageIndex = 0;
+        let filteredItems = portfolioItems;
+
+        // Initialize Portfolio
+        function renderPortfolio(filter = 'all') {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+            
+            filteredItems = filter === 'all' 
+                ? portfolioItems 
+                : portfolioItems.filter(item => item.category === filter);
+            
+            filteredItems.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'portfolio-item';
+                div.onclick = () => openLightbox(index);
+                div.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-view">+</div>
+                        <div class="portfolio-category">${item.category.toUpperCase()}</div>
+                        <div class="portfolio-title">${item.title}</div>
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        // Filter Buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderPortfolio(this.dataset.filter);
+            });
+        });
+
+        // Lightbox Functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            img.src = filteredItems[index].img;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = filteredItems.length - 1;
+            if (currentImageIndex >= filteredItems.length) currentImageIndex = 0;
+            document.getElementById('lightboxImg').src = filteredItems[currentImageIndex].img;
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active Navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Animate skill bars on scroll
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => bar.style.width = width, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.resume-card').forEach(card => skillObserver.observe(card));
+
+        // Initialize
+        renderPortfolio();
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / 700);
+            }
+        });
+    </script>
+</body>
+</html>
