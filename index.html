@@ -1077,23 +1077,26 @@
     <script>
         // Portfolio Data - Replace these URLs with your actual image URLs when you host them
         const portfolioItems = [
-            { id: 1, category: 'social', title: 'Solar Properties', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop' },
-            { id: 2, category: 'social', title: 'Private Piano Lessons', img: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=600&h=600&fit=crop' },
-            { id: 3, category: 'social', title: 'Embrace Elegance', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=600&fit=crop' },
-            { id: 4, category: 'social', title: 'February Campaign', img: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=600&fit=crop' },
-            { id: 5, category: 'social', title: 'Shop Your Gadgets', img: 'https://images.unsplash.com/photo-1498049860654-af1a5c5668ba?w=600&h=600&fit=crop' },
-            { id: 6, category: 'social', title: 'Energy Reload', img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&h=600&fit=crop' },
-            { id: 7, category: 'logo', title: 'Pato Visuals', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=600&fit=crop' },
-            { id: 8, category: 'logo', title: 'Synapse', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=600&fit=crop' },
-            { id: 9, category: 'logo', title: 'Relay', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop' },
-            { id: 10, category: 'brand', title: 'Social Media Presence', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=600&fit=crop' },
-            { id: 11, category: 'brand', title: 'Elevate Your Brand', img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=600&fit=crop' },
-            { id: 12, category: 'brand', title: 'Africa Startups', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=600&fit=crop' },
-            { id: 13, category: 'web3', title: '$1 Million Giveaway', img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=600&fit=crop' },
-            { id: 14, category: 'web3', title: 'Mega Finance', img: 'https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=600&h=600&fit=crop' },
-            { id: 15, category: 'web3', title: 'Nexus X Synapse', img: 'https://images.unsplash.com/photo-1644361566696-3d442b5b482a?w=600&h=600&fit=crop' },
-            { id: 16, category: 'other', title: "Becky's Glamour", img: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=600&h=600&fit=crop' },
-            { id: 17, category: 'other', title: 'The Power of Mindset', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop' },
+            { id: 1, category: 'social', title: 'Shop Your Gadgets', img: 'assets/works/shop-your-gadgets.jpg' },
+            { id: 2, category: 'web3', title: 'Wanna Make Cool Cash', img: 'assets/works/wanna-make-cool-cash.jpg' },
+            { id: 3, category: 'brand', title: 'Energy Reload', img: 'assets/works/energy-reload.jpg' },
+            { id: 4, category: 'other', title: 'Ash Wednesday', img: 'assets/works/ash-wednesday.jpg' },
+            { id: 5, category: 'social', title: 'Welcome to March', img: 'assets/works/welcome-to-march.jpg' },
+            { id: 6, category: 'brand', title: 'Transform Your Social Media Presence', img: 'assets/works/transform-social-media-presence.jpg' },
+            { id: 7, category: 'brand', title: 'Invest in Solar Properties', img: 'assets/works/invest-solar-properties.jpg' },
+            { id: 8, category: 'brand', title: 'Sprite Campaign', img: 'assets/works/sprite-campaign.jpg' },
+            { id: 9, category: 'brand', title: 'Elevate Your Brand', img: 'assets/works/elevate-your-brand.jpg' },
+            { id: 10, category: 'other', title: "Becky's Glamour", img: 'assets/works/beckys-glamour.jpg' },
+            { id: 11, category: 'other', title: 'One Bite Shawarma', img: 'assets/works/one-bite-shawarma.jpg' },
+            { id: 12, category: 'other', title: 'Praise & Worship', img: 'assets/works/praise-and-worship.jpg' },
+            { id: 13, category: 'other', title: 'Communion Service', img: 'assets/works/communion-service.jpg' },
+            { id: 14, category: 'other', title: 'Taking Immediate Action', img: 'assets/works/taking-immediate-action.jpg' },
+            { id: 15, category: 'social', title: 'Portfolio Landing Slide', img: 'assets/works/portfolio-landing-slide.jpg' },
+            { id: 16, category: 'social', title: 'Resume Slide', img: 'assets/works/resume-slide.jpg' },
+            { id: 17, category: 'social', title: 'Home Slide', img: 'assets/works/home-slide.jpg' },
+            { id: 18, category: 'other', title: 'Take That Bold Step', img: 'assets/works/take-that-bold-step.jpg' },
+            { id: 19, category: 'social', title: 'Welcome to February', img: 'assets/works/welcome-to-february.jpg' },
+            { id: 20, category: 'other', title: 'Others Grid Showcase', img: 'assets/works/others-grid-showcase.jpg' }
         ];
 
         let currentImageIndex = 0;
@@ -1113,7 +1116,7 @@
                 div.className = 'portfolio-item';
                 div.onclick = () => openLightbox(index);
                 div.innerHTML = `
-                    <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    <img src="${item.img}" alt="${item.title}" loading="lazy" onerror="this.style.objectFit='contain';this.style.padding='1.5rem';this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 600%22%3E%3Crect width=%22600%22 height=%22600%22 fill=%22%23111%22/%3E%3Ctext x=%2250%25%22 y=%2248%25%22 fill=%22%2300d4ff%22 font-size=%2230%22 text-anchor=%22middle%22 font-family=%22Arial,sans-serif%22%3EImage missing%3C/text%3E%3Ctext x=%2250%25%22 y=%2256%25%22 fill=%22%23ffffff%22 font-size=%2222%22 text-anchor=%22middle%22 font-family=%22Arial,sans-serif%22%3EUpload in assets/works/%3C/text%3E%3C/svg%3E'">
                     <div class="portfolio-overlay">
                         <div class="portfolio-view">+</div>
                         <div class="portfolio-category">${item.category.toUpperCase()}</div>
