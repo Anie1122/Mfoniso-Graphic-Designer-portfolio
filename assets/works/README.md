@@ -1,9 +1,10 @@
 # Portfolio Work Images
 
-Your images were showing as **"Image missing"** because the files are not yet in this repository under `/assets/works/`.
+Your images were showing as **"Image missing"** because image files are not physically present in this repo under `/assets/works/`.
+Chat attachments are not automatically written into the Git repository during deployment.
 
-## Add your files here
-Place the uploaded portfolio images in this folder using these exact filenames:
+## Option 1 (recommended): Commit image files
+Add your provided images to `/assets/works/` with these exact filenames:
 
 - `shop-your-gadgets.jpg`
 - `wanna-make-cool-cash.jpg`
@@ -25,6 +26,10 @@ Place the uploaded portfolio images in this folder using these exact filenames:
 - `take-that-bold-step.jpg`
 - `welcome-to-february.jpg`
 - `others-grid-showcase.jpg`
+
+## Option 2: Use in-browser uploader
+The page now includes an **"Upload Provided Works"** button in the portfolio section.
+Select images from your phone/computer in order and they will replace the gallery instantly (client-side preview).
 
 ## Current behavior
 - App first loads local files from `/assets/works/...`

@@ -730,6 +730,39 @@
             color: var(--primary-blue);
         }
 
+
+        .portfolio-tools {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-btn {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            padding: 0.7rem 1.3rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .upload-btn:hover {
+            background: rgba(0, 212, 255, 0.12);
+            box-shadow: var(--glow-blue);
+        }
+
+        .upload-hint {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .about-grid,
@@ -984,6 +1017,12 @@
             <span class="section-tag">PORTFOLIO</span>
             <h2>My Recent Works</h2>
         </div>
+
+        <div class="portfolio-tools">
+            <button class="upload-btn" id="uploadWorksBtn" type="button">Upload Provided Works</button>
+            <input type="file" id="worksInput" accept="image/*" multiple hidden>
+        </div>
+        <p class="upload-hint">Select your provided images in order to replace gallery items instantly.</p>
 
         <div class="portfolio-filter">
             <button class="filter-btn active" data-filter="all">All Works</button>
@@ -1245,6 +1284,25 @@
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.resume-card').forEach(card => skillObserver.observe(card));
+
+
+        // Manual Work Upload (client-side preview)
+        const worksInput = document.getElementById('worksInput');
+        const uploadWorksBtn = document.getElementById('uploadWorksBtn');
+
+        uploadWorksBtn.addEventListener('click', () => worksInput.click());
+
+        worksInput.addEventListener('change', (event) => {
+            const files = Array.from(event.target.files || []).filter(file => file.type.startsWith('image/'));
+            if (!files.length) return;
+
+            files.forEach((file, index) => {
+                if (!portfolioItems[index]) return;
+                portfolioItems[index].img = URL.createObjectURL(file);
+            });
+
+            renderPortfolio(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
+        });
 
         // Initialize
         renderPortfolio();
