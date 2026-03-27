@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#4a8bff"/>
+      <stop offset="70%" stop-color="#2456ff"/>
+      <stop offset="100%" stop-color="#0a2a9e"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="220" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#5ecbff" stroke-opacity="0.45" stroke-width="10"/>
+  <g fill="#fff" filter="url(#glow)">
+    <circle cx="206" cy="190" r="40"/>
+    <circle cx="256" cy="170" r="52"/>
+    <circle cx="316" cy="190" r="38"/>
+    <rect x="170" y="188" width="180" height="48" rx="24"/>
+    <path d="M246 208 L332 168 L300 228 L266 214 L246 208 Z" fill="#b8e9ff"/>
+    <path d="M290 192 L332 168 L304 210 Z" fill="#0b2ed8" opacity="0.45"/>
+  </g>
+
+  <g fill="#ffffff" font-family="Arial, sans-serif" text-anchor="middle" filter="url(#glow)">
+    <text x="256" y="302" font-size="46" font-weight="700">CLOUD EDGE</text>
+    <text x="256" y="350" font-size="44" font-weight="700" letter-spacing="10">MEDIA</text>
+  </g>
+</svg>
