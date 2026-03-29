@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mfoniso Ubong | Cloud Edge Media</title>
+  <meta name="description" content="Portfolio of Mfoniso Ubong, Tech Advocate, Graphic Designer, and founder of Cloud Edge Media." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#071018;--bg2:#03070b;--card:#0d1620;--line:#173246;--text:#f4fbff;--muted:#9ab3c3;--accent:#1ad7ff}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,sans-serif;background:radial-gradient(circle at top,#112034 0,#071018 45%,#03070b 100%);color:var(--text)}
+    a{color:inherit} img{max-width:100%;display:block} button{font:inherit}
+    .wrap{width:min(1120px,92vw);margin:auto}
+    nav{position:sticky;top:0;z-index:20;background:rgba(3,7,11,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:Orbitron,sans-serif;font-weight:700}
+    .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+    .brand span{letter-spacing:.08em}
+    .links{display:flex;gap:18px;flex-wrap:wrap}.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--accent)}
+    section{padding:72px 0}
+    .hero{padding:72px 0 48px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;padding:8px 14px;border:1px solid rgba(26,215,255,.35);border-radius:999px;background:rgba(26,215,255,.08);color:var(--accent);font-family:Orbitron,sans-serif;font-size:12px;letter-spacing:.08em}
+    h1{font:900 clamp(38px,7vw,74px)/1.02 Orbitron,sans-serif;margin:18px 0 14px}
+    .grad{background:linear-gradient(135deg,#fff 0,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);font-size:18px;max-width:680px}
+    .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-block;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:700}.btn.primary{background:var(--accent);color:#00131c}.btn.secondary{border:1px solid rgba(26,215,255,.4);color:var(--text);background:rgba(255,255,255,.03)}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+    .owner{aspect-ratio:1/1;border-radius:22px;overflow:hidden;background:#0a1016;display:flex;align-items:center;justify-content:center}
+    .owner img{width:100%;height:100%;object-fit:cover}
+    h2{font:700 clamp(28px,4vw,42px)/1.12 Orbitron,sans-serif;margin:0 0 14px}
+    .sub{color:var(--muted);margin:0 0 24px}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:center}
+    .skillchips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#d9ebf5}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{padding:22px;border-radius:22px;background:var(--card);border:1px solid rgba(255,255,255,.08)} .card h3{margin:0 0 10px;font-family:Orbitron,sans-serif;font-size:18px;color:var(--accent)} .card p,.card li{color:var(--muted)}
+    .cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:28px}.cat{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden}.cat img{aspect-ratio:1/1;object-fit:cover;width:100%}.cat div{padding:12px;font-weight:700;font-size:14px}
+    .slider-wrap{position:relative}
+    .slider-head{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    .slider-nav{display:flex;gap:10px;align-items:center}.navbtn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:var(--card);color:var(--text);cursor:pointer}.navbtn:hover{border-color:var(--accent);color:var(--accent)}
+    .slider-shell{overflow:hidden;border-radius:28px}
+    .slider-track{display:flex;transition:transform .45s ease}
+    .slide{min-width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .work{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden}.work img{aspect-ratio:1/1;object-fit:cover;width:100%;background:#08111a}.work .meta{padding:16px 18px}.kicker{font:700 12px Orbitron,sans-serif;color:var(--accent);letter-spacing:.08em}
+    .dots{display:flex;gap:8px}.dot{width:10px;height:10px;border-radius:999px;background:#284252;opacity:.7}.dot.active{background:var(--accent);opacity:1}
+    .socials{display:flex;gap:14px;flex-wrap:wrap}.social{padding:14px 18px;border-radius:16px;text-decoration:none;background:var(--card);border:1px solid rgba(255,255,255,.08)} .social:hover{border-color:var(--accent);color:var(--accent)}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}
+    .contact-card{padding:20px;border-radius:22px;background:var(--card);border:1px solid rgba(255,255,255,.08)} .contact-card h3{margin:0 0 10px;font-family:Orbitron,sans-serif;font-size:16px;color:var(--accent)} .contact-card p,.contact-card a{color:var(--text);text-decoration:none;word-break:break-word}
+    footer{padding:28px 0 40px;color:var(--muted);border-top:1px solid rgba(255,255,255,.08);margin-top:22px}
+    @media (max-width:900px){.hero-grid,.about,.cards,.contact-grid{grid-template-columns:1fr}.cats{grid-template-columns:repeat(2,minmax(0,1fr))}.slide{grid-template-columns:1fr}.links{display:none}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav">
+      <a class="brand" href="#home"><img src="assets/logo-cloud-edge.svg" alt="Cloud Edge Media logo"><span>CLOUD EDGE MEDIA</span></a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">TECH ADVOCATE • GRAPHIC DESIGNER • MEDIA CREATIVE</div>
+        <h1><span class="grad">Mfoniso</span> Ubong</h1>
+        <p class="lead">I help brands, churches, creators, and businesses stand out with clear visuals, modern flyer design, branded content, and smart digital creativity through Cloud Edge Media.</p>
+        <div class="cta">
+          <a class="btn primary" href="#portfolio">View Portfolio</a>
+          <a class="btn secondary" target="_blank" rel="noopener noreferrer" href="https://wa.me/message/ENSKSMRDE624F1">WhatsApp Chat</a>
+        </div>
+      </div>
+      <div class="panel owner"><img src="assets/mfoniso-owner-card.png" alt="Mfoniso Ubong portfolio card"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="panel"><img src="assets/logo-cloud-edge.svg" alt="Cloud Edge Media brand logo" style="width:140px;margin:0 auto 18px"><p class="sub" style="margin:0">Cloud Edge Media is the creative identity behind Mfoniso Ubong’s design, branding, and media work.</p></div>
+      <div>
+        <h2>About the Portfolio</h2>
+        <p class="sub">This portfolio showcases selected works across flyer design, brand visuals, church media, promotional content, and creative concept graphics.</p>
+        <div class="skillchips">
+          <span class="chip">Brand Flyer Designs</span>
+          <span class="chip">Church Flyer Designs</span>
+          <span class="chip">Photo Editing / Recovery</span>
+          <span class="chip">Event Coverage / Videography</span>
+          <span class="chip">Brand / Visual Identity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>What I Do</h2>
+      <p class="sub">Creative services built for visibility, engagement, and stronger brand presentation.</p>
+      <div class="cards">
+        <div class="card"><h3>Brand & Flyer Design</h3><p>Promotional visuals, ads, church flyers, campaign creatives, and brand-focused graphics.</p></div>
+        <div class="card"><h3>Visual Identity</h3><p>Logo-centered visuals, branded layouts, and design systems that make brands look consistent.</p></div>
+        <div class="card"><h3>Photo Editing</h3><p>Cleanup, recovery, enhancement, and polished visual treatments for portraits and content pieces.</p></div>
+        <div class="card"><h3>Media Support</h3><p>Creative direction for event content, awareness visuals, and digital-first promotional assets.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <h2>Portfolio Categories</h2>
+      <p class="sub">These are the featured categories currently on the site.</p>
+      <div class="cats">
+        <div class="cat"><img src="assets/works/event-coverage-videography.jpg" alt="Event Coverage / Videography"><div>Event Coverage / Videography</div></div>
+        <div class="cat"><img src="assets/works/brand-flyer-designs.jpg" alt="Brand Flyer Designs"><div>Brand Flyer Designs</div></div>
+        <div class="cat"><img src="assets/works/photo-editing-recovery.jpg" alt="Photo Editing / Recovery"><div>Photo Editing / Recovery</div></div>
+        <div class="cat"><img src="assets/works/church-flyer-designs.jpg" alt="Church Flyer Designs"><div>Church Flyer Designs</div></div>
+        <div class="cat"><img src="assets/works/brand-visual-identity.jpg" alt="Brand / Visual Identity"><div>Brand / Visual Identity</div></div>
+      </div>
+
+      <div class="slider-wrap">
+        <div class="slider-head">
+          <div>
+            <h2 style="margin:0">Selected Works</h2>
+            <p class="sub" style="margin:8px 0 0">Your works now appear inside a real slideshow.</p>
+          </div>
+          <div class="slider-nav">
+            <button class="navbtn" id="prevBtn" aria-label="Previous slide">&#10094;</button>
+            <div class="dots" id="dots"></div>
+            <button class="navbtn" id="nextBtn" aria-label="Next slide">&#10095;</button>
+          </div>
+        </div>
+        <div class="slider-shell">
+          <div class="slider-track" id="sliderTrack"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Connect With Me</h2>
+      <p class="sub">Use the links below to follow the brand and reach the portfolio owner.</p>
+      <div class="socials">
+        <a class="social" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/mfoniso_ubong?igsh=MXE1ODI3NDhsMmNiaw==">Instagram</a>
+        <a class="social" target="_blank" rel="noopener noreferrer" href="https://x.com/MfonisoUbong">X</a>
+        <a class="social" target="_blank" rel="noopener noreferrer" href="https://www.threads.com/@mfoniso_ubong">Threads</a>
+        <a class="social" target="_blank" rel="noopener noreferrer" href="https://wa.me/message/ENSKSMRDE624F1">WhatsApp Chat</a>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card"><h3>WhatsApp</h3><a target="_blank" rel="noopener noreferrer" href="https://wa.me/message/ENSKSMRDE624F1">https://wa.me/message/ENSKSMRDE624F1</a></div>
+        <div class="contact-card"><h3>Phone</h3><a href="tel:+2348104139916">+234 810 413 9916</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Mfoniso Ubong • Cloud Edge Media</div>
+  </footer>
+
+  <script>
+    const works = [
+      {title:'Shop Your Gadgets', category:'Brand Flyer Design', img:'assets/works/shop-your-gadgets.svg'},
+      {title:'Wanna Make Cool Cash', category:'Brand Flyer Design', img:'assets/works/wanna-make-cool-cash.svg'},
+      {title:'Energy Reload', category:'Brand Flyer Design', img:'assets/works/energy-reload.svg'},
+      {title:'Ash Wednesday', category:'Church Flyer Design', img:'assets/works/ash-wednesday.svg'},
+      {title:'Welcome to March', category:'Brand Flyer Design', img:'assets/works/welcome-to-march.svg'},
+      {title:'Transform Social Media Presence', category:'Brand / Visual Identity', img:'assets/works/transform-social-media-presence.svg'},
+      {title:'Invest in Solar Properties', category:'Brand Flyer Design', img:'assets/works/invest-solar-properties.svg'},
+      {title:'Sprite Campaign', category:'Brand Flyer Design', img:'assets/works/sprite-campaign.svg'},
+      {title:'Elevate Your Brand', category:'Brand / Visual Identity', img:'assets/works/elevate-your-brand.svg'},
+      {title:"Becky's Glamour", category:'Brand Flyer Design', img:'assets/works/beckys-glamour.svg'},
+      {title:'One Bite Shawarma', category:'Brand Flyer Design', img:'assets/works/one-bite-shawarma.svg'},
+      {title:'Praise & Worship', category:'Church Flyer Design', img:'assets/works/praise-and-worship.svg'},
+      {title:'Communion Service', category:'Church Flyer Design', img:'assets/works/communion-service.svg'},
+      {title:'Taking Immediate Action', category:'Church Flyer Design', img:'assets/works/taking-immediate-action.svg'},
+      {title:'Take That Bold Step', category:'Brand / Visual Identity', img:'assets/works/take-that-bold-step.svg'},
+      {title:'Welcome to February', category:'Brand Flyer Design', img:'assets/works/welcome-to-february.svg'},
+      {title:'Always Refreshing', category:'Brand Flyer Design', img:'assets/works/always-refreshing.svg'}
+    ];
+
+    const perSlide = window.innerWidth <= 900 ? 1 : 2;
+    const slides = [];
+    for (let i = 0; i < works.length; i += perSlide) slides.push(works.slice(i, i + perSlide));
+
+    const track = document.getElementById('sliderTrack');
+    const dots = document.getElementById('dots');
+    let index = 0;
+    let timer;
+
+    slides.forEach((group, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.innerHTML = group.map(item => `
+        <article class="work">
+          <img src="${item.img}" alt="${item.title}">
+          <div class="meta"><div class="kicker">${item.category}</div><strong>${item.title}</strong></div>
+        </article>
+      `).join('');
+      track.appendChild(slide);
+
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dots.appendChild(dot);
+    });
+
+    function render() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      [...dots.children].forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function goTo(i) { index = (i + slides.length) % slides.length; render(); restart(); }
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+    function restart() { clearInterval(timer); timer = setInterval(() => { index = (index + 1) % slides.length; render(); }, 4000); }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    render(); restart();
+  </script>
+</body>
+</html>
